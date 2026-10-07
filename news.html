@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Wire | Highlights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hide scrollbar for neatness */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Background decorative elements -->
+    <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-50 z-0 pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-50 z-0 pointer-events-none fixed"></div>
+
+    <div class="min-h-screen p-6 md:p-12 relative z-10 overflow-y-auto pb-24">
+        <div class="max-w-6xl mx-auto">
+            
+            <!-- Header & Back Button -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+                <div>
+                    <!-- STANDARD HTML LINK BACK TO TERMINAL -->
+                    <a href="index.html" class="mb-4 text-indigo-300 hover:text-white transition-colors text-sm inline-flex items-center gap-2">
+                        <i class="fa-solid fa-arrow-left"></i> Return to Terminal
+                    </a>
+                    <h1 class="text-4xl font-bold tracking-tight mb-2 flex items-center gap-3">
+                        <i class="fa-solid fa-globe text-blue-500"></i> Global Wire
+                    </h1>
+                    <p class="text-indigo-200/70">Live updates and highlights from around the world • March 2026</p>
+                </div>
+                
+                <div class="glass-panel px-4 py-2 rounded-lg text-sm font-medium text-emerald-400 flex items-center gap-2">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+                    </span>
+                    Live Feed Active
+                </div>
+            </div>
+
+            <!-- News Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Main Highlight -->
+                <article class="glass-panel rounded-2xl p-6 lg:col-span-2 flex flex-col justify-between group cursor-pointer hover:bg-white/10 transition-colors">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-red-500/20 text-red-400 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Geopolitics</span>
+                            <span class="text-indigo-200/50 text-xs">2 hours ago</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-bold mb-3 group-hover:text-blue-300 transition-colors">US Considers Scaling Back Operations as Middle East Conflict Enters Fourth Week</h2>
+                        <p class="text-indigo-100/80 mb-6 leading-relaxed">
+                            Following a surge in global oil prices and severe disruptions to shipping in the Strait of Hormuz, the White House has hinted at "winding down" military efforts. Meanwhile, sanctions on Iranian oil stranded at sea have been temporarily lifted to stabilize international markets amid the ongoing energy shock.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3 mt-4 border-t border-white/10 pt-4">
+                        <div class="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-sm font-bold">AP</div>
+                        <span class="text-sm text-indigo-200">Associated Press / Global Desk</span>
+                    </div>
+                </article>
+
+                <!-- Standard Card 1 -->
+                <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between group cursor-pointer hover:bg-white/10 transition-colors">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-purple-500/20 text-purple-400 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Science & Space</span>
+                            <span class="text-indigo-200/50 text-xs">5 hours ago</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-purple-300 transition-colors">Astronomers Prepare for the Annual Messier Marathon Night</h3>
+                        <p class="text-indigo-100/80 text-sm mb-6 leading-relaxed">
+                            Stargazers globally are taking advantage of the Vernal Equinox to attempt viewing all 110 deep-sky objects in Charles Messier's catalog in a single night, from sundown to sunup.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-indigo-300 mt-auto">
+                        <a href="https://www.physicsandmathstutor.com/maths-revision/solutionbanks/edexcel-pure-maths-year-1/" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white transition-colors">
+                            Read full story <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Standard Card 2 -->
+                <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between group cursor-pointer hover:bg-white/10 transition-colors">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-blue-500/20 text-blue-400 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Technology & Defense</span>
+                            <span class="text-indigo-200/50 text-xs">8 hours ago</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-blue-300 transition-colors">Pentagon Adopts Palantir AI as Core US Military System</h3>
+                        <p class="text-indigo-100/80 text-sm mb-6 leading-relaxed">
+                            Palantir's "Maven" artificial intelligence system is officially becoming a program of record, marking a massive shift towards AI-integrated defense strategy and logistics tracking.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-indigo-300 mt-auto">
+                        <a href="https://www.reuters.com/technology/pentagon-adopts-palantir-ai-core-us-military-system-2026-03-19/" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white transition-colors">
+                            Read full story <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Standard Card 3 -->
+                <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between group cursor-pointer hover:bg-white/10 transition-colors">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-emerald-500/20 text-emerald-400 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Economy</span>
+                            <span class="text-indigo-200/50 text-xs">12 hours ago</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-emerald-300 transition-colors">Oil Shock Hits Airlines as Jet Fuel Prices Double</h3>
+                        <p class="text-indigo-100/80 text-sm mb-6 leading-relaxed">
+                            Major airlines are warning of massive operational cost increases, with projections showing fuel expenses could soar by $11 billion annually if global Brent crude prices remain volatile.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-indigo-300 mt-auto">
+                        Read full story <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </div>
+                </article>
+
+                <!-- Standard Card 4 -->
+                <article class="glass-panel rounded-2xl p-6 flex flex-col justify-between group cursor-pointer hover:bg-white/10 transition-colors">
+                    <div>
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="bg-orange-500/20 text-orange-400 text-xs font-bold px-2 py-1 rounded uppercase tracking-wider">Asia-Pacific</span>
+                            <span class="text-indigo-200/50 text-xs">1 day ago</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 group-hover:text-orange-300 transition-colors">Indonesia Eyes Coal Windfall to Shield Budget</h3>
+                        <p class="text-indigo-100/80 text-sm mb-6 leading-relaxed">
+                            The Indonesian government plans to optimize state revenue from coal to capture windfall profits as global energy prices rise, aiming to strengthen its fiscal position.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-2 text-sm text-indigo-300 mt-auto">
+                        <a target="_blank" href="https://www.reuters.com/markets/commodities/indonesia-eyes-coal-windfall-shield-budget-2026-03-20/" class="inline-flex items-center gap-2 text-indigo-300 hover:text-white transition-colors">
+                            Read full story <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmanuel's News App.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-input {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .glass-input:focus {
+            background: rgba(0, 0, 0, 0.4);
+            border-color: #6366f1;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+
+        .glass-button {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .glass-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.8);
+            background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+        }
+        
+        .news-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .news-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .toast-enter {
+            animation: slideIn 0.5s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="relative antialiased selection:bg-indigo-500 selection:text-white">
+
+    <!-- Background decorative elements -->
+    <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-indigo-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-50 z-0 pointer-events-none"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-purple-600 rounded-full mix-blend-multiply filter blur-[128px] opacity-50 z-0 pointer-events-none"></div>
+
+    <div class="min-h-screen flex items-center justify-center p-6 relative z-10">
+        <div class="max-w-md w-full">
+            <!-- Header -->
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl glass-panel mb-4">
+                    <i class="fa-solid fa-database text-2xl text-indigo-400"></i>
+                </div>
+                <h1 class="text-3xl font-bold tracking-tight mb-2">My First ever app</h1>
+                <p class="text-indigo-200/70 text-sm">Secure data synchronization terminal</p>
+                
+                <!-- STANDARD HTML LINK TO NEWS PAGE -->
+                <a href="news.html" class="mt-6 px-4 py-2 rounded-lg news-button text-sm font-medium inline-flex items-center justify-center mx-auto gap-2">
+                    <i class="fa-solid fa-earth-americas text-blue-400"></i> View Global News Highlights
+                </a>
+            </div>
+
+            <!-- Form Card -->
+            <div class="glass-panel rounded-3xl p-8">
+                <form id="dataForm" class="space-y-6">
+                    <!-- Full Name -->  
+                    <div class="space-y-2">
+                        <label for="fullName" class="text-xs font-semibold tracking-wider text-indigo-200 uppercase">Operative Name</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-user absolute left-4 top-1/2 transform -translate-y-1/2 text-indigo-300/50"></i>
+                            <input type="text" id="fullName" required placeholder="Emma Boy" 
+                                class="glass-input w-full pl-11 pr-4 py-3 rounded-xl text-sm placeholder-indigo-200/30">
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="space-y-2">
+                        <label for="email" class="text-xs font-semibold tracking-wider text-indigo-200 uppercase">Comm Link (Email)</label>
+                        <div class="relative">
+                            <i class="fa-regular fa-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-indigo-300/50"></i>
+                            <input type="email" id="email" required placeholder="emma@nexus.com" 
+                                class="glass-input w-full pl-11 pr-4 py-3 rounded-xl text-sm placeholder-indigo-200/30">
+                        </div>
+                    </div>
+
+                    <!-- Role Dropdown -->
+                    <div class="space-y-2">
+                        <label for="role" class="text-xs font-semibold tracking-wider text-indigo-200 uppercase">Assigned Role</label>
+                        <div class="relative">
+                            <i class="fa-solid fa-shield-halved absolute left-4 top-1/2 transform -translate-y-1/2 text-indigo-300/50"></i>
+                            <select id="role" required class="glass-input w-full pl-11 pr-4 py-3 rounded-xl text-sm appearance-none cursor-pointer">
+                                <option value="" disabled selected class="text-gray-800">Select clearance level...</option>
+                                <option value="Engineer" class="text-gray-800">Systems Engineer</option>
+                                <option value="Analyst" class="text-gray-800">Data Analyst</option>
+                                <option value="Director" class="text-gray-800">Node Director</option>
+                            </select>
+                            <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 transform -translate-y-1/2 text-indigo-300/50 pointer-events-none text-xs"></i>
+                        </div>
+                    </div>
+
+                    <!-- Rating Slider -->
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <label for="rating" class="text-xs font-semibold tracking-wider text-indigo-200 uppercase">System Integrity</label>
+                            <span id="ratingValue" class="text-xs font-bold bg-indigo-500/30 text-indigo-300 px-2 py-1 rounded-md">100%</span>
+                        </div>
+                        <input type="range" id="rating" min="0" max="100" value="100" 
+                            class="w-full h-2 bg-indigo-900/50 rounded-lg appearance-none cursor-pointer accent-indigo-500">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" id="submitBtn" class="glass-button w-full py-3.5 rounded-xl font-semibold text-sm tracking-wide flex justify-center items-center gap-2 mt-8">
+                        <span>Transmit Data</span>
+                        <i class="fa-solid fa-satellite-dish"></i>
+                    </button>
+                </form>
+            </div>
+            
+            <p class="text-center text-xs text-indigo-300/40 mt-6">End-to-end encrypted connection via Localhost:5000</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div id="toastContainer" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3"></div>
+
+    <script>
+        // Update rating badge dynamically
+        const ratingInput = document.getElementById('rating');
+        const ratingValue = document.getElementById('ratingValue');
+        
+        ratingInput.addEventListener('input', (e) => {
+            ratingValue.textContent = `${e.target.value}%`;
+            if (e.target.value > 70) ratingValue.className = 'text-xs font-bold bg-emerald-500/30 text-emerald-300 px-2 py-1 rounded-md';
+            else if (e.target.value > 30) ratingValue.className = 'text-xs font-bold bg-amber-500/30 text-amber-300 px-2 py-1 rounded-md';
+            else ratingValue.className = 'text-xs font-bold bg-red-500/30 text-red-300 px-2 py-1 rounded-md';
+        });
+
+        // handle receiving data from server
+        async function fetchData() {
+            try {
+                const resp = await fetch('/api/data');
+                const responseData = await resp.json();
+
+                if (responseData.data && responseData.data.length > 0) {
+                    const data = responseData.data[0];
+                    const email = data.email;
+                    const role = data.role;
+                    const rating = data.rating;
+                    const name = data.full_name;
+                    showToast('Data received from server, Name: ' + name + ' with email ' + email + ' with role ' + role + ' and rating ' + rating, 'success');
+                } else {
+                    console.log('No data found in database');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Error receiving data from server', 5000, 'error');
+            }
+        }
+
+        // Call fetchData when page loads
+        fetchData();
+
+        // Handle Form Submission
+        document.getElementById('dataForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalBtnContent = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Transmitting...';
+            btn.disabled = true;
+
+            const payload = {
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                role: document.getElementById('role').value,
+                rating: document.getElementById('rating').value,
+                timestamp: new Date().toISOString()
+            };
+
+            try {
+                const response = await fetch('/api/collect', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showToast('Success', 'Data synchronized with Node successfully.', 'success');
+                    document.getElementById('dataForm').reset();
+                    ratingValue.textContent = '100%';
+                    ratingValue.className = 'text-xs font-bold bg-indigo-500/30 text-indigo-300 px-2 py-1 rounded-md';
+                } else {
+                    showToast('Error', result.message || 'Transmission failed.', 'error');
+                }
+            } catch (error) {
+                showToast('Connection Error', 'Cannot reach local server. Ensure Python backend is running.', 'error');
+                console.error('Error:', error);
+            } finally {
+                btn.innerHTML = originalBtnContent;
+                btn.disabled = false;
+            }
+        });
+
+        // Toast Notification System
+        function showToast(title, message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            const isSuccess = type === 'success';
+            const icon = isSuccess ? 'fa-check-circle text-emerald-400' : 'fa-triangle-exclamation text-red-400';
+            const border = isSuccess ? 'border-emerald-500/30' : 'border-red-500/30';
+            
+            toast.className = `glass-panel border ${border} p-4 rounded-xl flex items-start gap-3 w-80 toast-enter`;
+            toast.innerHTML = `
+                <i class="fa-solid ${icon} mt-1"></i>
+                <div>
+                    <h4 class="font-bold text-sm text-white">${title}</h4>
+                    <p class="text-xs text-indigo-200/80 mt-1">${message}</p>
+                </div>
+                <button onclick="this.parentElement.remove()" class="ml-auto text-indigo-300 hover:text-white">
+                    <i class="fa-solid fa-xmark text-sm"></i>
+                </button>
+            `;
+            container.appendChild(toast);
+            setTimeout(() => {
+                if (toast.parentElement) {
+                    toast.style.opacity = '0';
+                    toast.style.transform = 'translateX(100%)';
+                    toast.style.transition = 'all 0.4s ease';
+                    setTimeout(() => toast.remove(), 9000);
+                }
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
